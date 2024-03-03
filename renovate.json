@@ -5,6 +5,12 @@
   ],
   "customManagers": [
     {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": ["ENV PYTHON_VERSION (?<currentValue>.*?)\n"],
+      "depNameTemplate": "python",
+      "datasourceTemplate": "docker"
+    },
+    {
       "customType": "regex",
       "fileMatch": ["packages\\.yml$"],
       "datasourceTemplate": "custom.dbt_hub",
