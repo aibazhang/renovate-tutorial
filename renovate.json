@@ -15,14 +15,14 @@
       "fileMatch": ["packages\\.yml$"],
       "datasourceTemplate": "custom.dbt_hub",
       "matchStrings": [
-        "- package: (?<depName>.+)\n  version: (?<currentValue>.+)"
+        "- package: (?<depName>.+)\n    version: (?<currentValue>.+)"
       ],
       "versioningTemplate": "semver"
     }
   ],
   "customDatasources": {
     "dbt_hub": {
-      "defaultRegistryUrlTemplate": "https://hub.getdbt.com/api/v1/{{packageName}}",
+      "defaultRegistryUrlTemplate": "https://hub.getdbt.com/api/v1/{{packageName}}.json",
       "format": "json",
       "transformTemplates": [
         "{ \"versions\": $map($.versions, function($v, $k) { { \"version\": $k, \"releaseTimestamp\": $v.published_at, \"changelogUrl\": $v._source.readme, \"sourceUrl\": $v._source.url } }) }"
