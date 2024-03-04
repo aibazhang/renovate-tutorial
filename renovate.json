@@ -24,7 +24,7 @@
     "dbt_hub": {
       "defaultRegistryUrlTemplate": "https://hub.getdbt.com/api/v1/{{packageName}}.json",
       "transformTemplates": [
-        "{ \"releases\": $map($.versions, function($v, $k) { { \"version\": $k, \"releaseTimestamp\": $v.published_at, \"changelogUrl\": $v._source.readme, \"sourceUrl\": $v._source.url } }) }"
+        "{\"releases\":[{\"version\": $string(latest)}]}"
       ]
     }
   }
